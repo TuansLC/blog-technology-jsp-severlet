@@ -114,7 +114,7 @@ public class PostDetailServlet extends HttpServlet {
 
       // Nếu người dùng đã đăng nhập
       if (currentUser != null) {
-        comment.setUserId(currentUser.getId());
+        comment.setUserId(currentUser.getId().intValue());
       } else {
         // Nếu là khách, lấy thông tin từ form
         String authorName = request.getParameter("authorName");

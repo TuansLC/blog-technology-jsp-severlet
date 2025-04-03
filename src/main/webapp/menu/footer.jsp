@@ -1,15 +1,34 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 
-<footer class="bg-light text-center text-lg-start mt-4">
-    <div class="container p-4">
-        <p>&copy; 2023 Blog Công nghệ. Tất cả các quyền được bảo lưu.</p>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Về chúng tôi</h5>
+                <p>Blog chia sẻ kiến thức về công nghệ, lập trình và những xu hướng mới nhất trong ngành IT.</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Liên kết</h5>
+                <ul class="list-unstyled">
+                    <li><a href="${pageContext.request.contextPath}/" class="text-decoration-none">Trang chủ</a></li>
+                    <li><a href="${pageContext.request.contextPath}/category" class="text-decoration-none">Danh mục</a></li>
+                    <li><a href="${pageContext.request.contextPath}/about-us" class="text-decoration-none">Giới thiệu</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact-us" class="text-decoration-none">Liên hệ</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h5>Theo dõi chúng tôi</h5>
+                <div class="social-links">
+                    <a href="#" class="text-decoration-none me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-decoration-none me-2"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-decoration-none me-2"><i class="bi bi-linkedin"></i></a>
+                    <a href="#" class="text-decoration-none"><i class="bi bi-github"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <p>&copy; 2024 Blog Công nghệ. All rights reserved.</p>
+        </div>
     </div>
-</footer>
-
-<!-- Back to Top Button -->
-<button id="backToTop" class="btn btn-primary btn-sm" title="Back to Top">
-    <i class="bi bi-arrow-up"></i>
-</button>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</footer> 

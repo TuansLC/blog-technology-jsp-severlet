@@ -1,6 +1,7 @@
 package com.ptit.blogtechnology.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Category {
   private int id;
@@ -79,5 +80,18 @@ public class Category {
         ", name='" + name + '\'' +
         ", slug='" + slug + '\'' +
         '}';
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+    Category category = (Category) obj;
+    return id == category.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 }

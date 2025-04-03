@@ -1,9 +1,13 @@
 package com.ptit.blogtechnology.dao;
 
 import com.ptit.blogtechnology.model.Subscriber;
-import com.ptit.blogtechnology.utils.DBUtils;
-
-import java.sql.*;
+import com.ptit.blogtechnology.utils.DatabaseUtil;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class SubscriberDAO {
@@ -14,7 +18,7 @@ public class SubscriberDAO {
 
     String sql = "SELECT * FROM subscribers WHERE email = ?";
 
-    try (Connection conn = DBUtils.getConnection();
+    try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
       stmt.setString(1, email);
@@ -35,7 +39,7 @@ public class SubscriberDAO {
   public boolean save(Subscriber subscriber) {
     String sql = "INSERT INTO subscribers (email, status, created_at, updated_at) VALUES (?, ?, ?, ?)";
 
-    try (Connection conn = DBUtils.getConnection();
+    try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
       stmt.setString(1, subscriber.getEmail());
@@ -64,7 +68,7 @@ public class SubscriberDAO {
   public boolean updateStatus(int id, String status) {
     String sql = "UPDATE subscribers SET status = ?, updated_at = ? WHERE id = ?";
 
-    try (Connection conn = DBUtils.getConnection();
+    try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
       stmt.setString(1, status);

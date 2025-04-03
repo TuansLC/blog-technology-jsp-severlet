@@ -12,11 +12,8 @@
     <meta property="og:description" content="${post.summary}">
     <meta property="og:image" content="${post.featuredImage}">
     <meta property="og:url" content="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/post/${post.slug}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
     <link href="${pageContext.request.contextPath}/css/styles.css" rel="stylesheet">
-    <!-- Thêm CSS cho highlight.js nếu cần hiển thị code -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github.min.css">
 </head>
 <body>
 <jsp:include page="/menu/header.jsp" />

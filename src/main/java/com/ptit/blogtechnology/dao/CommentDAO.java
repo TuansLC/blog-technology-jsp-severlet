@@ -1,9 +1,14 @@
 package com.ptit.blogtechnology.dao;
 
 import com.ptit.blogtechnology.model.Comment;
-import com.ptit.blogtechnology.utils.DBUtils;
-
-import java.sql.*;
+import com.ptit.blogtechnology.utils.DatabaseUtil;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
+import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +30,7 @@ public class CommentDAO {
         "WHERE c.post_id = ? AND c.status = 'APPROVED' " +
         "ORDER BY c.created_at ASC";
 
-    try (Connection conn = DBUtils.getConnection();
+    try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
       stmt.setInt(1, postId);
@@ -67,7 +72,7 @@ public class CommentDAO {
         "content, status, parent_id, created_at, updated_at) " +
         "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    try (Connection conn = DBUtils.getConnection();
+    try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
       stmt.setInt(1, comment.getPostId());
@@ -114,7 +119,7 @@ public class CommentDAO {
   public boolean updateStatus(int commentId, String status) {
     String sql = "UPDATE comments SET status = ?, updated_at = ? WHERE id = ?";
 
-    try (Connection conn = DBUtils.getConnection();
+    try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
       stmt.setString(1, status);
@@ -136,7 +141,7 @@ public class CommentDAO {
     PreparedStatement stmt = null;
 
     try {
-      conn = DBUtils.getConnection();
+      conn = DatabaseUtil.getConnection();
       conn.setAutoCommit(false);
 
       // Xóa các bình luận con trước
@@ -194,7 +199,7 @@ public class CommentDAO {
         "WHERE c.status = 'NEW' " +
         "ORDER BY c.created_at ASC";
 
-    try (Connection conn = DBUtils.getConnection();
+    try (Connection conn = DatabaseUtil.getConnection();
         PreparedStatement stmt = conn.prepareStatement(sql);
         ResultSet rs = stmt.executeQuery()) {
 

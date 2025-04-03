@@ -24,6 +24,7 @@ public class Post {
   private double averageRating;
   private int ratingCount;
   private List<Comment> comments = new ArrayList<>();
+  private String excerpt;
 
   // Constructors
   public Post() {
@@ -125,8 +126,8 @@ public class Post {
     return isFeatured;
   }
 
-  public void setFeatured(boolean featured) {
-    isFeatured = featured;
+  public void setFeatured(boolean isFeatured) {
+    this.isFeatured = isFeatured;
   }
 
   public int getViewCount() {
@@ -199,6 +200,14 @@ public class Post {
 
   public void setComments(List<Comment> comments) {
     this.comments = comments;
+  }
+
+  public String getExcerpt() {
+    return excerpt;
+  }
+
+  public void setExcerpt(String excerpt) {
+    this.excerpt = excerpt;
   }
 
   // Utility methods
